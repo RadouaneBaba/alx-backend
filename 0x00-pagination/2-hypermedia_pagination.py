@@ -38,7 +38,7 @@ class Server:
         if (data_range[1] > len(self.__dataset)):
             return []
         return self.__dataset[data_range[0]:data_range[1]]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """ get hyper implementation """
         hyper_data = self.get_page(page, page_size)
@@ -47,7 +47,7 @@ class Server:
             "page_size": len(hyper_data),
             "page": page,
             "data": hyper_data,
-            "next_page": page + 1 if cond else None,
+            "next_page": page + 1 if not cond else None,
             "prev_page": page - 1 if page > 1 else None,
             "total_pages": math.ceil(len(self.__dataset) / page_size),
         }
