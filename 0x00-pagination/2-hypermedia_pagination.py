@@ -42,7 +42,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """ get hyper implementation """
         hyper_data = self.get_page(page, page_size)
-        cond = (page + 1) * page_size > len(hyper_data)
+        cond = (page + 1) * page_size > len(self.__dataset)
         return {
             "page_size": len(hyper_data),
             "page": page,
